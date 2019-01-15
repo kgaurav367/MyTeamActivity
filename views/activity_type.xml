@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--********** Form View of Activity Type **********-->
+
+    <record model="ir.ui.view" id="activity_type_form_view">
+        <field name="name">Activity Type.form.view</field>
+        <field name="model">activity.type</field>
+        <field name="arch" type="xml">
+            <form string="Activity Type Form">
+                <sheet>
+                    <group>
+                        <field name="activity_category_id"/>
+                        <field name="activity_type"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--********** End Form View of Activity Type **********-->
+
+
+
+
+
+    <!--********** Tree View of Activity Type **********-->
+
+    <record model="ir.ui.view" id="activity_type_tree_view">
+        <field name="name">Activity Type.tree.view</field>
+        <field name="model">activity.type</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Activity Type Tree">
+                <field name="activity_category_id"/>
+                <field name="activity_type"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!--********** End Of Tree View of Activity Type **********-->
+
+
+
+
+    <!--********** Window of Activity Type **********-->
+
+    <record model="ir.actions.act_window" id="activity_type_list_action">
+        <field name="name">Activity Type </field>
+        <field name="res_model">activity.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Activity Type here</p>
+        </field>
+    </record>
+
+    <!--********** End Window of Activity Type **********-->
+
+
+
+    <!--********** Menu of Activity Type **********-->
+
+    <menuitem parent="crm.crm_menu_pipeline" name="Activity Type" id="activity_type_menu" action="activity_type_list_action" sequence= "41"/>
+
+    <!--********** End Menu of Activity Type **********-->
+
+</odoo>
+
+
+
+
+
+
+
+
+

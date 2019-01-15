@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--********** Form View of Reminder View**********-->
+
+    <record id="reminder_view_line_view_tree" model="ir.ui.view">
+        <field name="name">Reminder View.tree</field>
+        <field name="model">reminder_view</field>
+        <field name="arch" type="xml">
+            <tree string="Reminder Tree" create="false" editable="bottom">
+                <field name="order_ids"/>
+                <field name="customer_name"/>
+                <field name="user_id"/>
+                <field name="activity_category_id"/>
+                <field name="eactivity_types_ids"/>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="sub_activity_date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--********** End Form View of Reminder View**********-->
+
+
+
+
+    <!--********** Kanban View of Reminder View**********-->
+
+    <!--<record id='reminder_view_line_view_kanban' model='ir.ui.view'>-->
+        <!--<field name="name">Reminder View.kanban</field>-->
+        <!--<field name="model">reminder_view</field>-->
+        <!--<field name="arch" type="xml">-->
+            <!--<kanban create="false">-->
+                <!--<field name="customer_name"/>-->
+                <!--<field name="user_id"/>-->
+                <!--<field name="activity_category_id"/>-->
+                <!--<field name="name"/>-->
+                <!--<field name="date"/>-->
+                <!--<field name=" sub_activity_date"/>-->
+                <!--<field name="status"/>-->
+                <!--<templates>-->
+                    <!--<t t-name="kanban-box">-->
+                        <!--<div class="oe_kanban_global_click">-->
+                            <!--<div class="o_kanban_record_top">-->
+                                <!--<div class="o_kanban_record_headings">-->
+                                    <!--<strong class="o_kanban_record_title"><field name="product_ids"/></strong>-->
+                                <!--</div>-->
+                                    <!--&lt;!&ndash; field name="state" widget="kanban_label_selection" options="{'classes': {'new': 'default', 'confirmed': 'success', 'cancelled':'danger'}}"/> &ndash;&gt;-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<field name="customer_name"/>-->
+                            <!--</div>-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-xs-6">-->
+                                    <!--<i class="fa fa-pencil"/> <field name="activity_category_id"/>-->
+                                <!--</div>-->
+                                <!--<div class="col-xs-6 text-right">-->
+                                    <!--<i class="fa fa-clock-o"/> <field name="date"/>-->
+                                <!--</div>-->
+                                <!--<div class="col-xs-6 text-right">-->
+                                    <!--<i class="fa fa-clock-o"/> <field name=" sub_activity_date"/>-->
+                                <!--</div>-->
+                                <!--<div class="col-xs-6 text-right">-->
+                                    <!--<i class="fa fa-circle"/> <field name="status"/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                                <!--&lt;!&ndash; <div class="row mt4">-->
+                                    <!--<div class="col-xs-6">-->
+                                        <!--<a class="btn btn-xs btn-success" name="order" string="Order" type="object" attrs="{'invisible': ['|',('state','=','confirmed'),('state','=','ordered')]}" groups="lunch.group_lunch_manager">-->
+                                            <!--<i class="fa fa-phone"/>-->
+                                        <!--</a>-->
+                                        <!--<a class="btn btn-xs btn-info" name="confirm" string="Receive" type="object" attrs="{'invisible': [('state','!=','ordered')]}" groups="lunch.group_lunch_manager">-->
+                                            <!--<i class="fa fa-check"/>-->
+                                        <!--</a>-->
+                                        <!--<a class="btn btn-xs btn-danger" name="cancel" string="Cancel" type="object" attrs="{'invisible': [('state','=','cancelled')]}" groups="lunch.group_lunch_manager">-->
+                                            <!--<i class="fa fa-times"/>-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-xs-6">-->
+                                        <!--<img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="24" height="24" class="oe_kanban_avatar pull-right"/>-->
+                                    <!--</div> &ndash;&gt;-->
+                        <!--</div>-->
+                    <!--</t>-->
+                <!--</templates>-->
+            <!--</kanban>-->
+        <!--</field>-->
+    <!--</record>-->
+
+     <!--********** End Kanban View of Reminder View**********-->
+
+
+
+
+    <!--********** Window Action of Reminder View**********-->
+    <record id="reminder_view_list_action" model="ir.actions.act_window">
+        <field name="name">Reminder Detail View</field>
+        <field name="res_model">reminder_view</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban</field>
+        <field name="help" type="html"><p>
+                There is no previous Reminder recorded. Click on "Reminder" menu and then create a new Reminder.
+            </p>
+        </field>
+    </record>
+    <!--********** End Of Window Action of Reminder View**********-->
+
+
+
+
+
+    <!--********** Search View of Reminder View**********-->
+
+    <record model="ir.ui.view" id="reminder_search_view">
+        <field name="name">reminder.search.view</field>
+        <field name="model">reminder_view</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="reminder Form">
+                <filter string="Today"  name="Today" separator="1"
+                        domain="['|',(' sub_activity_date', '=', context_today().strftime('%Y-%m-%d')),
+                        ('date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+
+                <filter string="Status:On Hold"  name="On Hold" separator="1" domain="[('status','=', 'hold')]"/>
+                <filter string="Status:Pending"  name="Pending" separator="1" domain="[('status','=', 'pending')]"/>
+                <filter string="Status:Done"  name="Done" separator="1" domain="[('status','=', 'done')]"/>
+                <filter string="Activity Category" context="{'group_by':'activity_category_id'}"/>
+                <filter string="Activity Type" context="{'group_by':'eactivity_types_ids'}"/>
+                <filter string="Reminder ID" context="{'group_by':'order_ids'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!--********** End Of Search View of Reminder View**********-->
+
+    <!--********** Menu of Reminder View**********-->
+
+    <menuitem parent="crm.crm_menu_pipeline" name="Reminder Detail View" id="reminder_view_menu" action="reminder_view_list_action" sequence= "47"/>     
+
+    <!--********** end of Menu of Reminder View**********-->
+</odoo>    

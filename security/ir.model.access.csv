@@ -1,0 +1,11 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+ActivityCategory_manager,"ActivityCategory Manager",model_activity_category,group_myteam_manager,1,1,1,1
+Activitytype_manager,"ActivityType Manager",model_activity_type,group_myteam_manager,1,1,1,1
+subactivity_manager,"SubActivity Manager",model_subactivity,group_myteam_manager,1,1,1,1
+reminder_manager,"Reminder Manager",model_reminder,group_myteam_manager,1,1,1,1
+reminderview_manager,"Reminder View Manager",model_reminder_view,group_myteam_manager,1,1,1,1
+ActivityCategory_user,"ActivityCategory User",model_activity_category,group_myteam_user,1,1,1,1
+Activitytype_user,"ActivityType User",model_activity_type,group_myteam_user,1,1,1,1
+subactivity_user,"SubActivity User",model_subactivity,group_myteam_user,1,1,1,1
+reminder_user,"Reminder User",model_reminder,group_myteam_user,1,1,1,1
+reminderview_user,"ReminderView User",model_reminder_view,group_myteam_user,1,1,1,1

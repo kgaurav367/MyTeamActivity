@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<odoo>
+<!--********** Form View of Sub Activity **********-->
+
+    <record model="ir.ui.view" id="subactivity_form_view">
+        <field name="name">Sub Activity.form.view</field>
+        <field name="model">subactivity</field>
+        <field name="arch" type="xml">
+            <form string="Sub Activity Form">
+                <sheet>
+                    <group>
+                        <field name="activity_category_id"/>
+                        <field name="eactivity_types_ids"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--********** End Form View of Sub Activity **********-->
+
+
+
+
+
+    <!--********** Tree View of Sub Activity **********-->
+
+    <record model="ir.ui.view" id="subactivity_tree_view">
+        <field name="name">Sub Activity.tree.view</field>
+        <field name="model">subactivity</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Sub Activity List">
+                <field name="activity_category_id"/>
+                <field name="eactivity_types_ids"/>
+                        <field name="name"/>
+                        
+                        <!-- <field name="user_id"/> -->
+                        <!-- <field name="date"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <!--********** End Tree View of Sub Activity **********-->
+
+
+
+
+
+    <!--********** Window Action of Sub Activity **********-->
+
+    <record model="ir.actions.act_window" id="subactivity_list_action">
+        <field name="name">Sub Activity </field>
+        <field name="res_model">subactivity</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Sub Activity here</p>
+        </field>
+    </record>
+
+      <!--********** End of Window Action of Sub Activity **********-->
+
+
+
+
+    <!--********** Menu Item of Sub Activity **********-->
+
+    <menuitem parent="crm.crm_menu_pipeline" name="SUB Activity" id="subactivity_menu" action="subactivity_list_action" sequence= "42"/>
+
+    <!--********** End Of Menu Item of Sub Activity **********-->
+
+</odoo>
+
+
+
+
+
+
+
+
+
+

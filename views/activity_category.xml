@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<odoo>
+    <!--********** Form View of Activity Category **********-->
+
+    <record model="ir.ui.view" id="activity_category_form_view">
+        <field name="name">Activity category.form.view</field>
+        <field name="model">activity.category</field>
+        <field name="arch" type="xml">
+            <form string="Activity Category Form">
+                <sheet>
+                    <group>
+                        <field name="activity_category"/>
+                        <field name="color" widget="color" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--********** End Form View **********-->
+
+
+
+    <!--**********  Tree View of Activity Category **********-->
+
+    <record model="ir.ui.view" id="activity_category_tree_view">
+        <field name="name">Activity category.tree.view</field>
+        <field name="model">activity.category</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Activity Category Tree">
+                <field name="activity_category"/>
+                <field name="color"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--********** End Tree View **********-->
+
+
+
+    <!--**********  Action Window of Activity Category **********-->
+
+    <record model="ir.actions.act_window" id="activity_category_list_action">
+        <field name="name">Activity category </field>
+        <field name="res_model">activity.category</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Activity category here</p>
+        </field>
+    </record>
+
+    <!--********** End Action Window **********-->
+
+
+
+
+    <!--**********  Menu of Activity Category **********-->
+
+    <menuitem parent="crm.crm_menu_pipeline" name="Activity Category" id="activity_category_menu" action="activity_category_list_action" sequence= "40"/>
+
+    <!--********** End of Menu of Activity Category **********-->
+
+</odoo>
+
+
+
+
+
+
+
+
+
